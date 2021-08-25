@@ -26,10 +26,12 @@ function showProduct(actor) {
   console.log(actor);
   const template = document.querySelector(".theList").content;
   const copy = template.cloneNode(true);
-  copy.querySelector(".acName").textContent = actor.fullname;
-  copy.querySelector(".details").setAttribute("id", "1");
-  copy.querySelector(".moName").textContent = actor.movie;
-  copy.querySelector(".exit").setAttribute("id", "exit1");
+  const theActor = copy.querySelector(".acName");
+  theActor.textContent = actor.fullname;
+  theActor.setAttribute("id", actor._id);
+  copy.querySelector(".details").setAttribute("id", `${actor._id}popup`);
+  copy.querySelector(".moName").textContent = `Starrs in: ${actor.movie}`;
+  copy.querySelector(".exit").setAttribute("id", `${actor._id}X`);
   const parent = document.querySelector("ul");
   parent.appendChild(copy);
 }
